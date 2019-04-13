@@ -20,26 +20,32 @@ def roll(r):
     return sum(resluts)
 
 turn = []
-
+add = 0
 perc = {}
 
 for i in range(10000):
-    i = roll(6)
+    i = roll(7)
     if i in perc:
         perc[i] = perc[i] + 1
     else:
+
         perc[i] = 1
     turn.append(i)
 
-print(perc[4]/10000)
+for i in range(5,8):
+    add = perc[i] + add
 
-title = 'Simulation of 10000 6 Melee Rolls'
-x = 'Times Hit'
-y = 'Times Rolled'
-plt.hist(turn)
-plt.title(title)
-plt.xlabel(x)
-plt.ylabel(y)
-plt.show()
+    
+
+
+print(add/10000)
+#title = 'Simulation of 10000 6 Melee Rolls'
+#x = 'Times Hit'
+#y = 'Times Rolled'
+#plt.hist(turn)
+#plt.title(title)
+#plt.xlabel(x)
+#plt.ylabel(y)
+#plt.show()
 
 
