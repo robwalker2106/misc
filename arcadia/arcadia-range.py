@@ -1,10 +1,10 @@
 import numpy as np
-import matplotlib.pyplot as plt
+
 
 np.random.seed(2106)
 
 number_of_rolls = int(input('How many dice are you rolling?: '))
-at_least = int(input('How many hits are you hoping to get?: '))
+
 
 
 def roll(r):
@@ -36,10 +36,15 @@ for i in range(10000):
         perc[i] = 1
     turn.append(i)
 
-for i in range(at_least,number_of_rolls + 1):
-    add = perc[i] + add
+table = ['Getting 0 hits: ' + str((perc[0]/10000))]
 
-print('Your change of getting ' + str(at_least) + ' hits is ' + str(add/10000))
+for y in range(1,number_of_rolls + 1):
+    add = 0
+    for i in range(y,number_of_rolls + 1):
+        add = perc[i] + add
+    table.append('Getting ' + str(y) + " hit(s): " + str(add/10000))
+
+print(table)
 
 
 
