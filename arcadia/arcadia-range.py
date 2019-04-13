@@ -6,6 +6,7 @@ np.random.seed(2106)
 number_of_rolls = int(input('How many dice are you rolling?: '))
 at_least = int(input('How many hits are you hoping to get?: '))
 
+
 def roll(r):
 
     resluts = []
@@ -14,12 +15,13 @@ def roll(r):
     for x in range(r):
         x = np.random.randint(1,7)
         if x <= 3:
-            resluts.append(1)
+            resluts.append(0)
         elif x == 4:
             resluts.append(1)
         else:
-            resluts.append(0)    
+            resluts.append(1)    
     return sum(resluts)
+
 
 turn = []
 add = 0
@@ -39,17 +41,5 @@ for i in range(at_least,number_of_rolls + 1):
 
 print('Your change of getting ' + str(at_least) + ' hits is ' + str(add/10000))
 
-    
-
-
-print(add/10000)
-#title = 'Simulation of 10000 6 Melee Rolls'
-#x = 'Times Hit'
-#y = 'Times Rolled'
-#plt.hist(turn)
-#plt.title(title)
-#plt.xlabel(x)
-#plt.ylabel(y)
-#plt.show()
 
 

@@ -4,7 +4,8 @@ import matplotlib.pyplot as plt
 np.random.seed(2106)
 
 number_of_rolls = int(input('How many dice are you rolling?: '))
-at_least = int(input('How many hits are you hoping to get?: '))
+at_least = int(input('How many blocks are you hoping to get?: '))
+
 
 def roll(r):
 
@@ -13,13 +14,13 @@ def roll(r):
 
     for x in range(r):
         x = np.random.randint(1,7)
-        if x <= 3:
-            resluts.append(1)
-        elif x == 4:
+        if x >= 5:
             resluts.append(1)
         else:
             resluts.append(0)    
     return sum(resluts)
+
+
 
 turn = []
 add = 0
@@ -34,22 +35,12 @@ for i in range(10000):
         perc[i] = 1
     turn.append(i)
 
+print(perc)
+
 for i in range(at_least,number_of_rolls + 1):
     add = perc[i] + add
 
-print('Your change of getting ' + str(at_least) + ' hits is ' + str(add/10000))
+print('Your change of getting ' + str(at_least) + ' blocks is ' + str(add/10000))
 
-    
-
-
-print(add/10000)
-#title = 'Simulation of 10000 6 Melee Rolls'
-#x = 'Times Hit'
-#y = 'Times Rolled'
-#plt.hist(turn)
-#plt.title(title)
-#plt.xlabel(x)
-#plt.ylabel(y)
-#plt.show()
 
 
