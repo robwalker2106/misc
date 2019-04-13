@@ -3,9 +3,6 @@ import matplotlib.pyplot as plt
 
 np.random.seed(2106)
 
-number_of_rolls = int(input('How many dice are you rolling?: '))
-at_least = int(input('How many blocks are you hoping to get?: '))
-
 
 def roll(r):
 
@@ -22,25 +19,29 @@ def roll(r):
 
 
 
-turn = []
-add = 0
-perc = {}
-
-for i in range(10000):
-    i = roll(number_of_rolls)
-    if i in perc:
-        perc[i] = perc[i] + 1
-    else:
-
-        perc[i] = 1
-    turn.append(i)
-
-print(perc)
-
-for i in range(at_least,number_of_rolls + 1):
-    add = perc[i] + add
-
-print('Your change of getting ' + str(at_least) + ' blocks is ' + str(add/10000))
+for k in range(1,9):
+    turn = []
+    perc = {}
+    for i in range(10000):
+        i = roll(k)
+        if i in perc:
+            perc[i] = perc[i] + 1
+        else:
+            perc[i] = 1
+        turn.append(i)
+    try:
+        table = ['Getting 0 blocks: ' + str(perc[0]/100) + "%"]
+    except:
+        table = ['Getting 0 blocks: 0.000%']
+    for y in range(1,k + 1):
+        add = 0
+        for i in range(y,k + 1):
+            try:
+                add = perc[i] + add
+            except:
+                add = add + 0
+        table.append('Getting ' + str(y) + " blocks: " + str(add/100) + "%")
+    print(k,'Dice Rolls',table,"\n")
 
 
 
