@@ -31,8 +31,7 @@ for k in range(1,9):
             perc[i] = 1
         turn.append(i)
     try:
-        
-        table = ['Getting 0 hits: ' + str((perc[0]/100) + "%")]
+        table = ['Getting 0 hits: ' + str(perc[0]/100) + "%"]
     except:
         table = ['Getting 0 hits: 0.000%']
     for y in range(1,k + 1):
